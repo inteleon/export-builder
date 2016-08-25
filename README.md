@@ -7,8 +7,6 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
 
 ## Install
 
@@ -22,17 +20,17 @@ $ composer require inteleon/export-builder
 
 ``` php
 
-new ReportBuilder())
+(new ReportBuilder())
 ->title('Random data')
-->text('Period: Big bang - Framtiden')
+->text('Period: Big bang - Future')
 
-->addColumn('första', 47.5, null)
-->addColumn('andra',  47.5, null)
-->addColumn('tredje', 47.5, '5678')
-->addColumn('fjärde', 47.5, '1234')
+->addColumn('first', 47.5, null)
+->addColumn('second',  47.5, null)
+->addColumn('third', 47.5, '5678', true)
+->addColumn('fourth', 47.5, '1234', false)
 
 ->numAmountColumns(2)
-->content($content)
+->data($data)
 ->addAccountingOrder(true)
 
 ->filename('report_test')
@@ -54,10 +52,6 @@ $ composer test
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details.
-
-## Security
-
-If you discover any security related issues, please email :author_email instead of using the issue tracker.
 
 ## License
 

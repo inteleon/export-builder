@@ -14,12 +14,12 @@ for ($i = 0; $i < 123; $i++) {
 
 (new ReportBuilder())
     ->title('Random data')
-    ->text('Period: Big bang - Framtiden')
+    ->text('Period: Big bang - Future')
 
-    ->addColumn('första', 47.5, null)
-    ->addColumn('andra',  47.5, null)
-    ->addColumn('tredje', 47.5, '5678', true)
-    ->addColumn('fjärde', 47.5, '1234', false)
+    ->addColumn('first', 47.5, null)
+    ->addColumn('second',  47.5, null)
+    ->addColumn('third', 47.5, '5678', true)
+    ->addColumn('fourth', 47.5, '1234', false)
 
     ->numAmountColumns(2)
     ->data($data)
