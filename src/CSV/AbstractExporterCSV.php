@@ -3,6 +3,7 @@
 namespace Inteleon\ExportBuilder\CSV;
 
 use Inteleon\ExportBuilder\Bases\AbstractBase;
+use Inteleon\ExportBuilder\Exceptions\ExportStoreException;
 use Inteleon\ExportBuilder\Exporter;
 
 abstract class AbstractExporterCSV implements Exporter
@@ -17,23 +18,40 @@ abstract class AbstractExporterCSV implements Exporter
         $this->base = $base;
     }
 
-    public function build()
-    {
-        // TODO: Implement this.
-    }
-
     public function download()
     {
-        // TODO: Implement this.
+        $filename = $this->getFilename();
+        header('Content-Type: text/csv');
+        header("Content-Disposition: attachment; filename='{$filename}'");
+        $this->render();
     }
 
     public function render()
     {
-        // TODO: Implement this.
+        $stream = $this->build();
+        echo stream_get_contents($stream);
+        fclose($stream);
     }
 
     public function store($path)
     {
-        // TODO: Implement this.
+        $stream = $this->build();
+        if (!file_put_contents($this->getFilename($path), stream_get_contents($stream))) {
+            throw new ExportStoreException('Cannot store content to path: ' . $this->getFilename($path));
+        }
+        fclose($stream);
+    }
+
+    /**
+     * Generate the filename
+     *
+     * @param string $path
+     * @return string
+     */
+    private function getFilename($path = '')
+    {
+        return
+            ($path != '' ? $path . DIRECTORY_SEPARATOR : '')
+            . $this->base->filename . '.csv';
     }
 }

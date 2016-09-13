@@ -16,8 +16,8 @@ for ($i = 0; $i < 123; $i++) {
     ->title('Random data')
     ->text('Period: Big bang - Future')
 
-    ->addColumn('first', 47.5, null)
-    ->addColumn('second',  47.5, null)
+    ->addColumn('first', 47.5)
+    ->addColumn('second',  47.5)
     ->addColumn('third', 47.5, '5678', true)
     ->addColumn('fourth', 47.5, '1234', false)
 

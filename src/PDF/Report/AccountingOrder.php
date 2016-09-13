@@ -49,7 +49,7 @@ class AccountingOrder
         $sum_credit = 0;
         $pdf->SetFont('Arial', '', 11);
         for ($i = 0; $i < count($this->base->column_names); $i++) {
-            if ($i >= $this->base->amount_columns_start) {
+            if ($this->base->account_names[$i] != null && $this->base->account_debits != null) {
                 $pdf->Cell(85, 8, $this->base->column_names[$i], 1, 0, 'L');
                 $pdf->Cell(25, 8, $this->base->account_names[$i], 1, 0, 'L');
                 if ($this->base->account_debits[$i]) {

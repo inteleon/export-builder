@@ -2,7 +2,9 @@
 
 namespace Inteleon\ExportBuilder\PDF;
 
+use Exception;
 use Inteleon\ExportBuilder\Bases\AbstractBase;
+use Inteleon\ExportBuilder\Exceptions\ExportStoreException;
 use Inteleon\ExportBuilder\Exporter;
 use Inteleon\Pdf\Pdf;
 
@@ -45,7 +47,14 @@ abstract class AbstractExporterPDF extends Pdf implements Exporter
 
     public function store($path)
     {
-        $this->build()->Output('F', $this->getFilename($path));
+        try {
+            $this->build()->Output('F', $this->getFilename($path));
+        } catch (Exception $e) {
+            if (preg_match('/Unable to create output file/i', $e->getMessage())) {
+                throw new ExportStoreException('Cannot store content to path: ' . $this->getFilename($path), 0, $e);
+            }
+            throw $e;
+        }
     }
 
     // @codingStandardsIgnoreStart
