@@ -5,6 +5,7 @@ namespace Inteleon\ExportBuilder\Builders;
 use Inteleon\ExportBuilder\Bases\ReportBase;
 use Inteleon\ExportBuilder\CSV\ReportCSV;
 use Inteleon\ExportBuilder\PDF\ReportPDF;
+
 use LogicException;
 
 class ReportBuilder extends Builder
@@ -16,8 +17,8 @@ class ReportBuilder extends Builder
     {
         parent::__construct(new ReportBase());
 
-        $this->addExportType('pdf', ReportPDF::class);
-        $this->addExportType('csv', ReportCSV::class);
+        $this->addExportType('pdf', 'Inteleon\ExportBuilder\PDF\ReportPDF');
+        $this->addExportType('csv', 'Inteleon\ExportBuilder\CSV\ReportCSV');
     }
 
     /**
