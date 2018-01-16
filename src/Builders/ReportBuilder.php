@@ -13,12 +13,14 @@ class ReportBuilder extends Builder
     /**
      * constructor.
      */
-    public function __construct()
-    {
+    public function __construct(
+        $pdf_class = 'Inteleon\ExportBuilder\PDF\ReportPDF',
+        $csv_class = 'Inteleon\ExportBuilder\CSV\ReportCSV'
+    ) {
         parent::__construct(new ReportBase());
 
-        $this->addExportType('pdf', 'Inteleon\ExportBuilder\PDF\ReportPDF');
-        $this->addExportType('csv', 'Inteleon\ExportBuilder\CSV\ReportCSV');
+        $this->addExportType('pdf', $pdf_class);
+        $this->addExportType('csv', $csv_class);
     }
 
     /**

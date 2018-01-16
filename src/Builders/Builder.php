@@ -68,7 +68,7 @@ abstract class Builder
      * @param $class
      * @throws InvalidArgumentException
      */
-    protected function addExportType($name, $class)
+    public function addExportType($name, $class)
     {
         if (!class_exists($class)) {
             throw new InvalidArgumentException($class . ' does not exists.');
