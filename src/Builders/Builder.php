@@ -123,7 +123,7 @@ abstract class Builder
      * @param $export_type
      * @return Exporter
      */
-    private function getExporter()
+    public function getExporter()
     {
         $export_type = strtolower($this->exporter);
 
