@@ -33,6 +33,19 @@ abstract class AbstractExporterCSV implements Exporter
         fclose($stream);
     }
 
+    /**
+     * @return string
+     */
+    public function buffer()
+    {
+        $stream = $this->build();
+        $content = stream_get_contents($stream);
+        fclose($stream);
+
+        return $content;
+    }
+
+
     public function store($path)
     {
         $stream = $this->build();

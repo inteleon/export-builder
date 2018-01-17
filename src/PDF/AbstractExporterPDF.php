@@ -35,6 +35,14 @@ abstract class AbstractExporterPDF extends Pdf implements Exporter
     {
     }
 
+    /**
+     * @return string
+     */
+    public function buffer()
+    {
+        return $this->build()->Output('S', $this->getFilename());
+    }
+
     public function download()
     {
         $this->build()->Output('D', $this->getFilename());

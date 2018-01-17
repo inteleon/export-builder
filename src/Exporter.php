@@ -35,6 +35,13 @@ interface Exporter
     public function render();
 
     /**
+     * get the buffer of the object
+     *
+     * @return string
+     */
+    public function buffer();
+
+    /**
      * Store it on the server.
      *
      * @param string $path
