@@ -118,9 +118,18 @@ abstract class Builder
     }
 
     /**
+     * Gets the filename.
+     *
+     * @return string
+     */
+    public function getFilename()
+    {
+        return $this->base->filename;
+    }
+
+    /**
      * Get the exporter used for building the file.
      *
-     * @param $export_type
      * @return Exporter
      */
     public function getExporter()
